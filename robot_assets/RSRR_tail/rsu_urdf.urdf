@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rsu_urdf">
+
+  <mujoco>
+    <compiler meshdir="meshes" discardvisual="false" />
+  </mujoco>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="3.04539185437167E-18 0.0124407350745328 -0.00952778587878488"
+        rpy="0 0 0" />
+      <mass
+        value="0.020099668041423" />
+      <inertia
+        ixx="5.85514490350731E-06"
+        ixy="-8.955298305074E-22"
+        ixz="6.4857227837378E-22"
+        iyy="4.86466504897363E-06"
+        iyz="5.75228826399091E-08"
+        izz="9.53578865001126E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_mid">
+    <inertial>
+      <origin
+        xyz="-9.76110883024739E-08 -6.93889390390723E-18 0.00164370719221552"
+        rpy="0 0 0" />
+      <mass
+        value="0.00772015470242627" />
+      <inertia
+        ixx="1.31821973140865E-07"
+        ixy="3.15000439236455E-12"
+        ixz="-4.31479434120062E-14"
+        iyy="1.19077835804066E-07"
+        iyz="-4.45039329666064E-12"
+        izz="9.01862971672415E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/left_mid.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/left_mid.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="phi1"
+    type="revolute">
+    <origin
+      xyz="-0.02 0 0.03"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_mid" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_rod">
+    <inertial>
+      <origin
+        xyz="-9.62881482879929E-10 -3.38895679158346E-08 0.0788580188975233"
+        rpy="0 0 0" />
+      <mass
+        value="0.0154173178374304" />
+      <inertia
+        ixx="4.22454706594119E-05"
+        ixy="-3.12744619020421E-12"
+        ixz="-4.59725107641233E-12"
+        iyy="4.22679519820374E-05"
+        iyz="5.79937942993414E-13"
+        izz="1.47396794283937E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/left_rod.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/left_rod.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="phi2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.014"
+      rpy="0 0 0" />
+    <parent
+      link="left_mid" />
+    <child
+      link="left_rod" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_mid">
+    <inertial>
+      <origin
+        xyz="-1.03598218222783E-07 -6.93889390390723E-18 0.0016437085983108"
+        rpy="0 0 0" />
+      <mass
+        value="0.00772015470242627" />
+      <inertia
+        ixx="1.31821965373673E-07"
+        ixy="2.86869844659904E-12"
+        ixz="-5.23814266385915E-14"
+        iyy="1.19077835804066E-07"
+        iyz="-4.39091589000072E-12"
+        izz="9.01863049344335E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/right_mid.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/right_mid.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="psi1"
+    type="revolute">
+    <origin
+      xyz="0.02 0 0.03"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_mid" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_rod">
+    <inertial>
+      <origin
+        xyz="-8.97074470262993E-10 -5.86938756416688E-08 0.0948445886297528"
+        rpy="0 0 0" />
+      <mass
+        value="0.0165482911927227" />
+      <inertia
+        ixx="6.46702763509919E-05"
+        ixy="-2.75315448228201E-13"
+        ixz="-4.07113143085488E-12"
+        iyy="6.46927576266381E-05"
+        iyz="6.56925276121149E-13"
+        izz="1.52486221362037E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/right_rod.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.956862745098039 0.956862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/right_rod.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="psi2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.014"
+      rpy="0 0 0" />
+    <parent
+      link="right_mid" />
+    <child
+      link="right_rod" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="main_mid">
+    <inertial>
+      <origin
+        xyz="-0.00147613941673388 0.00010348496706616 -0.0105"
+        rpy="0 0 0" />
+      <mass
+        value="0.0169792722258016" />
+      <inertia
+        ixx="4.01261651396752E-07"
+        ixy="9.22728959640642E-09"
+        ixz="1.16803808940955E-11"
+        iyy="5.32010006529684E-07"
+        iyz="9.48545038348846E-12"
+        izz="3.44378926097997E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/main_mid.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/main_mid.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="alpha"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0105"
+      rpy="0 0 1.6409" />
+    <parent
+      link="base_link" />
+    <child
+      link="main_mid" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="main_rod">
+    <inertial>
+      <origin
+        xyz="2.66185784111217E-10 -0.0172337555612457 0.27696158948001"
+        rpy="0 0 0" />
+      <mass
+        value="0.251856293416819" />
+      <inertia
+        ixx="0.000779029988397432"
+        ixy="5.42121996529371E-08"
+        ixz="-2.05918326408743E-06"
+        iyy="0.000657450913564974"
+        iyz="1.36966785356677E-05"
+        izz="0.000137517929055365" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/main_rod.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/main_rod.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="alpha2"
+    type="revolute">
+    <origin
+      xyz="-0.014963 0.0010507 -0.0105"
+      rpy="1.5708 0 -1.6409" />
+    <parent
+      link="main_mid" />
+    <child
+      link="main_rod" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="motor_left">
+    <inertial>
+      <origin
+        xyz="-0.0180879661846556 0.00898315501480947 4.15266504516509E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.00429498890692695" />
+      <inertia
+        ixx="8.56756689887253E-07"
+        ixy="-3.3508077436754E-09"
+        ixz="-1.4939837457129E-14"
+        iyy="1.52677917393827E-07"
+        iyz="7.89294066750139E-14"
+        izz="7.14946779544534E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/motor_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/motor_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="theta1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.285"
+      rpy="0 0 0" />
+    <parent
+      link="main_rod" />
+    <child
+      link="motor_left" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="motor_right">
+    <inertial>
+      <origin
+        xyz="0.0180879661968736 0.00898315582017125 -3.97439825494672E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.00429498885337272" />
+      <inertia
+        ixx="8.5675663373576E-07"
+        ixy="3.35080723907536E-09"
+        ixz="-1.36038069167432E-14"
+        iyy="1.52677921489213E-07"
+        iyz="-6.52160953973555E-14"
+        izz="7.14946720423235E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/motor_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/meshes/motor_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="theta2"
+    type="revolute">
+    <origin
+      xyz="0 -0.0010529 0.325"
+      rpy="0 0 0" />
+    <parent
+      link="main_rod" />
+    <child
+      link="motor_right" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
