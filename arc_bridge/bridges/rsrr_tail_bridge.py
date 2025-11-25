@@ -9,5 +9,5 @@ class RsrrTailBridge(Lcm2MujocoBridge):
         super().__init__(mj_model, mj_data, config)
 
 
-    # def parse_robot_specific_low_state(self):
-    #     pass
+    def parse_robot_specific_low_state(self):
+        self.low_state.ft_sensor[:] = self.mj_data.sensordata[24:30]

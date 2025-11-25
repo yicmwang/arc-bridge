@@ -5,4 +5,6 @@ struct rsrr_tail_state_t {
     double qj_tau[8];
     double qj_pos[8];
     double qj_vel[8];
+
+    double ft_sensor[6];
 }

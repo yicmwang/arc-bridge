@@ -1,0 +1,138 @@
+<mujoco model="sfb_urdf">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  
+  <option>
+    <flag contact = 'disable'/>
+  </option>
+
+  
+  <default>
+    <motor ctrlrange="-8 8"/>
+    <equality solref='0.00000001 1'/>
+  </default>
+
+  <asset>
+    <mesh name="base_link" content_type="model/stl" file="base_link.STL"/>
+    <mesh name="coupler1" content_type="model/stl" file="coupler1.STL"/>
+    <mesh name="input1" content_type="model/stl" file="input1.STL"/>
+    <mesh name="trans1" content_type="model/stl" file="trans1.STL"/>
+    <mesh name="main" content_type="model/stl" file="main.STL"/>
+    <mesh name="motor1" content_type="model/stl" file="motor1.STL"/>
+    <mesh name="motor2" content_type="model/stl" file="motor2.STL"/>
+    <mesh name="spring_link" content_type="model/stl" file="spring_link.STL"/>
+    <mesh name="cart" content_type="model/stl" file="cart.STL"/>
+    <mesh name="input2" content_type="model/stl" file="input2.STL"/>
+    <mesh name="trans2" content_type="model/stl" file="trans2.STL"/>
+    <mesh name="coupler2" content_type="model/stl" file="coupler2.STL"/>
+  </asset>
+
+  <equality>
+  <joint joint1='alpha1' joint2='a3' polycoef='0 1 0 0 0'/>
+  <joint joint1='alpha2' joint2='b3' polycoef='0 -1 0 0 0'/>
+  <joint joint1='alpha1' joint2='m1' polycoef='0 -1 0 0 0'/>
+  <joint joint1='alpha2' joint2='m2' polycoef='0 1 0 0 0'/>
+  <connect body2="virtual_spring" body1="cart" anchor='0 0 0' active="true"/>
+  <connect body2="virtual_spring" body1="cart" anchor='0 0 .1' />
+  <connect body1="coupler2" body2="input2" anchor='-12.55 -13.37 44.90'/>
+  <!-- <connect body1="coupler2" body2="input2" /> -->
+  </equality>
+
+   <actuator>
+    <motor name="motor_left" joint="m1" />
+    <motor name="motor_right" joint="m2" />
+  </actuator>
+  
+  <sensor>
+    <jointpos name="theta1_pos" joint="m1" noise="0"/>
+    <jointpos name="theta2_pos" joint="m2" noise="0"/>
+
+    <jointvel name="theta1_vel" joint="m1" noise="0"/>
+    <jointvel name="theta2_vel" joint="m2" noise="0"/>
+
+    <jointactuatorfrc name="theta1_torque" joint="m1" noise="0"/>
+    <jointactuatorfrc name="theta2_torque" joint="m2" noise="0"/>
+
+    <force name="force" site="ft_sensor" />
+    <torque name="torque" site="ft_sensor" />
+    <gyroscope name='gyro' site='IMU' />
+    <accelerometer name='gyro' site='IMU' />
+  </sensor>
+
+  <worldbody>
+    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="base_link"/>
+    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="base_link"/>
+    <site name="ft_sensor" />
+    <body name="virtual_spring">
+      <joint name="spring" type='slide' pos='0 0 0' axis='0 0 1'  range="-.03784 .1" stiffness='1e3' frictionloss='.5'/>
+      <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.00274684" diaginertia="3.46349e-07 3.21133e-07 0.736045e-07"/>
+    </body>
+    <body name="coupler1">
+      <inertial pos="-0.0214665 0.00597758 0.0200764" quat="0.688427 0.161395 0.351127 0.613783" mass="0.0211161" diaginertia="2.63206e-06 2.57749e-06 4.36038e-07"/>
+      <joint name="a1" pos="0 0 0" axis="-1 0 0" range="-0.2894 1.2814"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.317647 0.247059 0.207843 1" mesh="coupler1"/>
+      <geom type="mesh" rgba="0.317647 0.247059 0.207843 1" mesh="coupler1"/>
+      <body name="input1">
+        <inertial pos="0.000656363 0.0110988 0.0221827" quat="0.610877 -0.0379765 -0.0591635 0.788598" mass="0.012203" diaginertia="1.72444e-06 1.54334e-06 4.15502e-07"/>
+        <joint name="a2" pos="0 0 0" axis="-0.25882 0.27564 0.925761" range="-3.14 3.14"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="input1"/>
+        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="input1"/>
+        <body name="trans1" pos="0.0074508 0 0.02906">
+          <inertial pos="0.169911 0.00806794 -0.000499884" quat="0.499264 0.500735 0.500735 0.499264" mass="0.0303651" diaginertia="0.000297036 0.000296908 2.17039e-07"/>
+          <joint name="a3" pos="0 0 0" axis="0 -1 0" range="-3.14 3.14"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="trans1"/>
+          <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="trans1"/>
+        </body>
+        <body name="main">
+          <inertial pos="0.292142 4.61185e-09 -0.0166974" quat="0.492997 0.50545 0.506972 0.494423" mass="0.236859" diaginertia="0.00073988 0.000627033 0.000127058"/>
+          <joint name="alpha1" pos="0 0 0" axis="0 -1 0" range="-1.3364 1.8052" damping="0.1" armature="0.01" frictionloss="0.2"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="main"/>
+          <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="main"/>
+          <site name="IMU" />
+          <body name="motor1" pos="0.34 0 -0.0010003">
+            <inertial pos="0.00223103 0.012088 0.0087017" quat="0.701755 0.0901732 0.0868345 0.701334" mass="0.004295" diaginertia="8.56773e-07 7.14947e-07 1.52662e-07"/>
+            <joint name="m1" pos="0 0 0" axis="0 -1 0" range="-3.14 3.14"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="motor1"/>
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="motor1"/>
+          </body>
+          <body name="motor2" pos="0.3 0 0">
+            <inertial pos="0.00223103 -0.012088 0.0087017" quat="0.701334 0.0868344 0.0901731 0.701755" mass="0.004295" diaginertia="8.56773e-07 7.14947e-07 1.52662e-07"/>
+            <joint name="m2" pos="0 0 0" axis="0 -1 0" range="-3.14 3.14"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="motor2"/>
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="motor2"/>
+          </body>
+          <body name="spring_link" pos="0.0769759 0 -0.001925">
+            <inertial pos="-0.038488 0 0.0523801" quat="0.671909 -0.220313 -0.220313 0.671909" mass="0.00886171" diaginertia="1.24524e-05 1.24144e-05 6.16037e-08"/>
+            <joint name="s1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="spring_link"/>
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="spring_link"/>
+            <body name="cart" pos="-0.0769759 0 0.10476">
+              <inertial pos="-4.35773e-10 -2.72351e-10 -1.43126e-11" quat="0.5 0.5 -0.5 0.5" mass="0.00274684" diaginertia="3.46349e-07 3.21133e-07 0.736045e-07"/>
+              <joint name="s2" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="cart"/>
+              <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="cart"/>
+            </body>
+          </body>
+          <body name="input2">
+            <inertial pos="0.000656371 -0.0110989 0.0221827" quat="0.788597 -0.0591656 -0.0379758 0.610879" mass="0.012203" diaginertia="1.72444e-06 1.54334e-06 4.15499e-07"/>
+            <joint name="alpha2" pos="0 0 0" axis="0 -1 0" range="-1.3364 1.8052" damping="0.1" armature="0.01" frictionloss="0.2"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="input2"/>
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="input2"/>
+            <body name="trans2" pos="0.0074508 0 0.02906">
+              <inertial pos="0.116418 -0.0118608 -4.52159e-07" quat="0.707404 0.70681 0 0" mass="0.000534365" diaginertia="6.78259e-09 6.78253e-09 4.59964e-09"/>
+              <joint name="b3" pos="0 0 0" axis="0 -1 0" range="-3.14 3.14"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="trans2"/>
+              <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="trans2"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="coupler2">
+      <inertial pos="-0.0187358 -0.00571384 0.0191907" quat="0.933558 0.136016 0.328156 0.0477831" mass="0.0197491" diaginertia="2.01569e-06 1.99206e-06 3.31575e-07"/>
+      <joint name="b1" pos="0 0 0" axis="-1 0 0" range="-1.2814 0.2894"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.317647 0.247059 0.207843 1" mesh="coupler2"/>
+      <geom type="mesh" rgba="0.317647 0.247059 0.207843 1" mesh="coupler2"/>
+    </body>
+  </worldbody>
+</mujoco>
