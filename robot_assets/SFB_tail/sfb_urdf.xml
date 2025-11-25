@@ -39,24 +39,24 @@
   </equality>
 
    <actuator>
-    <motor name="motor_left" joint="m1" />
-    <motor name="motor_right" joint="m2" />
+    <motor name="motor_left" joint="alpha1" />
+    <motor name="motor_right" joint="alpha2" />
   </actuator>
   
   <sensor>
-    <jointpos name="theta1_pos" joint="m1" noise="0"/>
-    <jointpos name="theta2_pos" joint="m2" noise="0"/>
+    <jointpos name="theta1_pos" joint="alpha1" noise="0"/>
+    <jointpos name="theta2_pos" joint="alpha2" noise="0"/>
 
-    <jointvel name="theta1_vel" joint="m1" noise="0"/>
-    <jointvel name="theta2_vel" joint="m2" noise="0"/>
+    <jointvel name="theta1_vel" joint="alpha1" noise="0"/>
+    <jointvel name="theta2_vel" joint="alpha2" noise="0"/>
 
-    <jointactuatorfrc name="theta1_torque" joint="m1" noise="0"/>
-    <jointactuatorfrc name="theta2_torque" joint="m2" noise="0"/>
+    <jointactuatorfrc name="theta1_torque" joint="alpha1" noise="0"/>
+    <jointactuatorfrc name="theta2_torque" joint="alpha2" noise="0"/>
 
     <force name="force" site="ft_sensor" />
     <torque name="torque" site="ft_sensor" />
-    <gyroscope name='gyro' site='IMU' />
-    <accelerometer name='gyro' site='IMU' />
+    <gyro name='gyro' site='IMU' />
+    <accelerometer name='accel' site='IMU' />
   </sensor>
 
   <worldbody>

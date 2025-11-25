@@ -8,3 +8,4 @@ from .tron1_wheeled_bridge import Tron1WheeledBridge
 from .tron1_linefoot_bridge import Tron1LinefootBridge
 from .pendulum_bridge import PendulumBridge
 from .rsrr_tail_bridge import RsrrTailBridge
+from .sfb_tail_bridge import SfbTailBridge
